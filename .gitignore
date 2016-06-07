@@ -32,9 +32,4 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-/App.Ads/.nuget
-/App.Ads/packages
-/App.Web/packages
-/App.Web/App.Web/Scripts/angularjs/i18n
-/App.Web/App.Web/logs
-/App.Web/.vs
+/packages

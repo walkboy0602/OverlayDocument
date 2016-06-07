@@ -1,0 +1,127 @@
+﻿<h2 style="text-align: center">GroupDocs.Viewer for .NET Sample</h2>
+
+<div ng-controller="HomeCtrl">
+
+    <ul>
+        <li>
+            <button class="btn btn-success" id="openImage"
+                    data-src="../img/01.jpg">
+                Open Image
+            </button>
+        </li>
+        <li>
+
+            <button class="btn btn-success" id="openVideo">
+                Open Video
+            </button>
+
+        </li>
+        <li>
+            <button class="docOpen btn btn-success" data-iframe="true" data-sub-html="#commentBox"
+                    data-src="@Url.Action("Doc", "Home", new { documentType = 1 })">
+                Open .doc
+            </button>
+        </li>
+        <li>
+            <button class="docOpen btn btn-success" data-iframe="true" data-sub-html="#commentBox"
+                    data-src="@Url.Action("Doc", "Home", new { documentType = 2 })">
+                Open .ppt
+            </button>
+        </li>
+        <li>
+            <button class="docOpen btn btn-success" data-iframe="true" data-sub-html="#commentBox"
+                    data-src="@Url.Action("Doc", "Home", new { documentType = 3 })">
+                Open .xls
+            </button>
+        </li>
+        <li>
+            <button class="docOpen btn btn-success" data-iframe="true" data-sub-html="#commentBox"
+                    data-src="@Url.Action("Doc", "Home", new { documentType = 4 })">
+                Open .pdf
+            </button>
+        </li>
+
+    </ul>
+
+    <div style="display:none;" id="video1">
+        <video class="lg-video-object lg-html5 video-js vjs-default-skin" controls preload="none">
+            <source src="http://sachinchoolur.github.io/lightGallery/static/videos/video1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+
+    <div style="display:none;" id="commentBox">
+        <div class="fb-comments">
+            <iframe src='@Url.Action("Comment", "Home")' name="banner" width="300" marginwidth="0" height="300"  align="top" scrolling="No" frameborder="0" hspace="0" vspace="0">Browser not compatible. </iframe>
+        </div>
+    </div>
+
+
+</div>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+
+            $('#openImage').on('click', function () {
+
+                $(this).lightGallery({
+                    appendSubHtmlTo: '.lg-item',
+                    addClass: 'fb-comments',
+                    mode: 'lg-fade',
+                    download: false,
+                    enableDrag: false,
+                    enableSwipe: false,
+                    thumbnail: false,
+                    escKey: true,
+                    dynamic: true,
+                    dynamicEl: [{
+                        "src": '../img/01.jpg',
+                        'thumb': '../img/01.jpg',
+                        'subHtml': '#commentBox'
+                    }]
+                });
+
+            });
+
+            $('.docOpen').lightGallery({
+                selector: 'this',
+                appendSubHtmlTo: '.lg-item',
+                addClass: 'fb-comments',
+                mode: 'lg-fade',
+                download: false,
+                enableDrag: false,
+                enableSwipe: false,
+                thumbnail: false,
+                escKey: true,
+                videoMaxWidth: '1920px'
+            });
+
+
+
+            $('#openVideo').on('click', function () {
+                $(this).lightGallery({
+                    appendSubHtmlTo: '.lg-item',
+                    addClass: 'fb-comments',
+                    mode: 'lg-fade',
+                    download: false,
+                    enableDrag: false,
+                    enableSwipe: false,
+                    thumbnail: false,
+                    escKey: true,
+                    videojs: true,
+                    dynamic: true,
+                    autoplay: true,
+                    dynamicEl: [{
+                        'html': '#video1',
+                        'subHtml': '#commentBox',
+                        'poster': 'http://sachinchoolur.github.io/lightGallery/static/img/thumb-v-y-1.jpg'
+                    }]
+                });
+            });
+
+        });
+    </script>
+}

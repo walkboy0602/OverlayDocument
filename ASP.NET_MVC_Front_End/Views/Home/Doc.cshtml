@@ -1,0 +1,43 @@
+﻿
+
+<div id="viewerHtmlDiv"></div>
+
+@section scripts{
+    <script>
+        $(function () {
+
+            var viewerSyle = {
+                ScrollView: 1,
+                DoublePageFlip: 2,
+                OnePageInRow: 3,
+                TwoPagesInRow: 4,
+                CoverThenTwoPagesInRow: 5
+            };
+
+            $('#viewerHtmlDiv').groupdocsViewer({
+                //filePath: 'http://groupdocs.com/images/banner/carousel2/signature.png',
+                filePath:  '@ViewBag.DocumentFile',
+                //filePath: 'ProcessFileFromStreamExample_1.pdf',
+                //filePath: 'ProcessFileFromStreamExample_2.doc',
+                zoomToFitWidth: false,
+                zoomToFitHeight: false,
+                showFolderBrowser: false,
+                showHeader: false,
+                showPaging: true,
+                width: 1920,
+                height: 900,
+                useHtmlBasedEngine: true,
+                showDownload: false,
+                downloadPdfFile: true,
+                showPrint: false,
+                usePdfPrinting: true,
+                enableStandardErrorHandling: false,
+                preloadPagesCount: 1,
+                viewerStyle: viewerSyle.ScrollView //Layout type
+            });
+
+            EnableRightClickMenu = false
+            $('#viewerHtmlDiv')[0].oncontextmenu = function () { return false; };
+        });
+    </script>
+}
