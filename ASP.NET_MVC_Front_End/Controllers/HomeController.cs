@@ -7,6 +7,7 @@ namespace MvcSample.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Url = Request.Url;
             return View();
         }
 
